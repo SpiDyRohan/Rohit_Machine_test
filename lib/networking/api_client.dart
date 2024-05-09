@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 import 'package:rohit_machine_test/response_model/login_response/login_response.dart';
 
 import '../response_model/users_response/users_response.dart';
@@ -11,7 +12,7 @@ abstract class ApiClient{
 
 
  @POST('login')
- Future<LoginResponse> loginAPi();
+ Future<LoginResponse> loginAPi(@Body() Map<String, dynamic > body);
 
  @GET('users')
  Future<UsersResponse> usersAPi();

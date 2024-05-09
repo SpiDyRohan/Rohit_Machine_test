@@ -33,28 +33,31 @@ class HomeScreeController extends GetxController{
   }
   Widget usersCard(UsersData usersData){
    return Container(
-     height: 200,
+     height: 80,
+     padding: EdgeInsets.symmetric(horizontal: 10),
+     margin: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
      decoration: BoxDecoration(
-       color: Colors.white,
-       borderRadius: BorderRadius.circular(15),
+       color: Colors.blue,
+       borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
      ),
-     child: Column(
+     child: Row(
        children: [
-         Container(
-           height: 50,
-           color: Colors.blue,
-           child: Row(
+         CircleAvatar(backgroundImage: NetworkImage(usersData.avatar!),radius: 30,),
+         // Image.network(usersData.avatar!),
+         Padding(
+           padding: const EdgeInsets.all(10),
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
              children: [
-               Image.network(usersData.avatar!),
-               Column(
-                 children: [
-                   Text(usersData.first_name!+" "+usersData.last_name!),
-                   Text(usersData.email!),
-                 ],
-               ),
+               Text(usersData.first_name!+" "+usersData.last_name!,style: TextStyle(
+                 color: Colors.white
+               ),),
+               Text(usersData.email!,style: TextStyle(
+                   color: Colors.white
+               ),),
              ],
            ),
-         )
+         ),
        ],
      ),
    );

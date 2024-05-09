@@ -11,26 +11,37 @@ class HomeScreen extends GetView<HomeScreeController> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         actions: [
-          Icon(Icons.notifications)
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Icon(Icons.notifications,color: Colors.white,),
+          )
         ],
-        leading: Icon(Icons.menu),
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Icon(Icons.menu,color: Colors.white),
+        ),
       ),
       body: Column(
         children: [
           Container(
             color: Colors.blueAccent,
-            height: 150,
-            child: Column(
-              children: [
-                Text("Home",style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white
-                ),),
-                Text("Team bedrijfsbureau",style: TextStyle(
-                    fontSize: 15,
+            height: 80,
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Home",style: TextStyle(
+                    fontSize: 25,
                     color: Colors.white
-                ),),
-              ],
+                  ),),
+                  Text("Team bedrijfsbureau",style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white
+                  ),),
+                ],
+              ),
             ),
           ),
           Obx(() => controller.showLoader.value
@@ -41,6 +52,7 @@ class HomeScreen extends GetView<HomeScreeController> {
                   ),
                 )
               : ListView.builder(
+            shrinkWrap: true,
                   itemCount: controller.userslist.value.length,
                   itemBuilder: (context, index) {
                     var usersData=controller.userslist.value[index];
